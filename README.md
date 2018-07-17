@@ -68,3 +68,7 @@ ansible-playbook playbooks/webserver_playbook.yml
 
 Your app is now provisioned. Test it on `http://192.168.1.10`
 ![Deployed](meme.gif)
+
+## License
+
+MIT, see the [LICENSE](LICENSE) file.
