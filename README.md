@@ -1,3 +1,5 @@
+![Stack Builders](https://github.com/stackbuilders/nano-chat/raw/master/sb.png)
+
 # Ansible provisioning
 
 ## Set up your SSH keys

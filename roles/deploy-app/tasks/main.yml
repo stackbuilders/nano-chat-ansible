@@ -1,31 +1,18 @@
 ---
+- name: Removing repo existing folder
+  file:
+    path: "{{ node_app_location }}"
+    state: absent
+
+- git:
+    repo: 'https://github.com/stackbuilders/nano-chat.git'
+    dest: "{{ node_app_location }}"
 
 - name: Install Forever
   npm:
     name: forever
     global: yes
     state: present
-
-- name: Creates app directory
-  file:
-    path: "{{ node_apps_location }}"
-    state: directory
-    recurse: yes
-
-- name: Copy app files
-  copy:
-    src: "{{ item }}"
-    dest: "{{ node_apps_location }}"
-  with_items:
-    - "../../../../backend"
-    - "../../../../frontend"
-    - "../../../../Makefile"
-
-- name: Remove frontend node_modules
-  file: path="{{ node_apps_location }}/frontend/node_modules"  state=absent
-
-- name: Remove backend node_modules
-  file: path="{{ node_apps_location }}/backend/node_modules"  state=absent
 
 - name: Check list of running Node.js apps.
   command: forever list
@@ -36,5 +23,4 @@
   command: forever stopall
 
 - name: Start example Node.js app.
-  command: "make run -C {{ node_apps_location }}"
-  when: "forever_list.stdout.find(node_apps_location + '/src/app.js') == -1"
+  command: "make start -C {{ node_app_location }}"

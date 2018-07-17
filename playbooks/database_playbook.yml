@@ -15,17 +15,14 @@
         line: '127.0.0.1 localhost database'
         state: present
 
-  vars_files: 
-    - vars/main.yml
-      
   roles:
     - role: geerlingguy.postgresql
+      postgresql_databases:
+        - name: nanochat
+      postgresql_users:
+        - name: admin
+          password: admin
       tag: database
-
-    - role: ssh-keys
-      tag: ssh
 
     - role: default-apps
       tag: apps
-
-

@@ -14,9 +14,6 @@
         line: '127.0.0.1 localhost webserver'
         state: present
 
-  vars_files:
-    - vars/main.yml 
-
   roles:
     - role: jdauphant.nginx
       nginx_http_params:
@@ -33,15 +30,8 @@
       tag: nodejs
       nodejs_version: "8.x"
     
-    - role: ssh-keys
-      tag: ssh
-
     - role: default-apps
       tag: apps
 
     - role: networking
       tag: networking
-
-    - role: deploy-app
-      tag: deploy
-

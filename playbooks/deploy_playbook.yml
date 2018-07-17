@@ -1,0 +1,8 @@
+---
+- hosts: webserver
+  become: true
+
+  roles:
+    - role: deploy-app
+      tag: deploy
+
