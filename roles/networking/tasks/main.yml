@@ -3,9 +3,5 @@
 - name: Open ssh http https ports
   ufw:
     rule: allow
-    port: '{{ item }}'
-  with_items:
-    - 22
-    - 80
-    - 443
+    port: 22
 

@@ -29,9 +29,3 @@
     - role: geerlingguy.nodejs
       tag: nodejs
       nodejs_version: "8.x"
-    
-    - role: default-apps
-      tag: apps
-
-    - role: networking
-      tag: networking
