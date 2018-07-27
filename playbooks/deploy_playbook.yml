@@ -2,6 +2,9 @@
 - hosts: webserver
   become: true
 
+  environment:
+    DB_CONN_NANOCHAT: postgresql://postgres@192.168.1.20:5432/nanochat
+
   roles:
     - role: deploy-app
       tag: deploy

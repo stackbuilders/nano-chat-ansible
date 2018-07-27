@@ -54,16 +54,12 @@ Next, install the galaxy requirements
 ansible-galaxy install -r requirements.yml
 ```
 
-Remove the host node_modules directories
-
-```bash
-rm -rf ../backend/node_modules && rm -rf ../frontend/node_modules
-```
-
-Run the playbook
+Run the playbooks
 
 ```bash
 ansible-playbook playbooks/webserver_playbook.yml
+ansible-playbook playbooks/database_playbook.yml
+ansible-playbook playbooks/deploy_playbook.yml
 ```
 
 Your app is now provisioned. Test it on `http://192.168.1.10`
