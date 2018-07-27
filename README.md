@@ -85,7 +85,7 @@ You have your servers up and running but with no apps.
 1. Start the Node.js application on the `deploy-app` role by executing:
 
     ```
-    make start -C {{ node_app_location }
+    make start -C {{ node_app_location }}
     ```
 1. Run the playbook
 
@@ -105,7 +105,18 @@ You have your servers up and running but with no apps.
     ansible-playbook playbooks/database_playbook.yml
     ```
 
-1. Test the application's *v2* endpoint to retrieve some data from database.
+1. Install `sequelize-cli` node module on the `deploy-app` role
+
+1. Run Sequelize commands on the `{{ node_app_location }}/backend` directory:
+
+    ```bash
+    sequelize db:migrate
+    sequelize db:seed:all
+    ```
+
+1. Define a environment variable `DB_CONN_NANOCHAT` with value of `postgresql://postgres@192.168.1.20:5432/nanochat` **deploy playbook**
+
+1. Test the application's endpoint to retrieve some data from database on [http://192.168.1.10/api/users](http://192.168.1.10/api/users)
 
 ## License
 
