@@ -14,6 +14,12 @@
     global: yes
     state: present
 
+- name: Install Sequelize CLI
+  npm:
+    name: sequelize-cli
+    global: yes
+    state: present
+
 - name: Check list of running Node.js apps.
   command: forever list
   register: forever_list
@@ -24,3 +30,13 @@
 
 - name: Start example Node.js app.
   command: "make start -C {{ node_app_location }}"
+
+- name: Run database migration
+  command: sequelize db:migrate
+  args:
+    chdir: "{{ node_app_location }}/backend"
+
+- name: Insert seed data
+  command: sequelize db:seed:all
+  args:
+    chdir: "{{ node_app_location }}/backend"
