@@ -13,6 +13,12 @@ You can check out the configuration on the "General Vagrant VM configuration." s
 
 ## Getting started with Vagrant
 
+Clone the repository:
+
+```bash
+git clone https://github.com/stackbuilders/nano-chat-ansible.git
+```
+
 Download the VM images and create two guest machines, one in 192.168.1.10 and the other in 192.168.1.20.
 
 ```bash
